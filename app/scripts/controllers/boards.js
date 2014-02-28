@@ -2,9 +2,14 @@
 
 angular.module('localboardsUiReduxApp')
   .controller('BoardsCtrl', function ($scope, $http) {
-    $http.get('http://api.localboards.org/states/NE/boards').
-        success(function(data) {
-            $scope.boards = data.data;
-        }
-    );
+  	var api = new $.LocalBoardsAPI();
+  	function onBoardListRequest(success, message, data) {
+		if (success) {
+			$scope.boards = data;
+			$scope.$apply();
+		}
+	}
+	api.onBoardListRequest = onBoardListRequest;
+	// TODO: pull state from URL params
+  	api.getBoardsByState('ne', 0, 25);
 });
