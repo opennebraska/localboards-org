@@ -2,12 +2,15 @@
 
 /* Controllers */
 
-var phonecatApp = angular.module('phonecatApp', []);
+var localboardsControllers = angular.module('localboardsControllers', []);
 
-phonecatApp.controller('PhoneListCtrl', function($scope, $http) {
+localboardsControllers.controller('BoardListCtrl', ['$scope', '$http',
+  function($scope, $http) {
+
     $http.get('http://api.localboards.org/states/NE/boards').
         success(function(data) {
             $scope.boards = data.data;
         }
     );
-});
+
+  }]);

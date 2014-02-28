@@ -1,21 +1,18 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="localboardsApp">
 <head>
   <meta charset="utf-8">
-  <title>Google Phone Gallery</title>
+  <title>Local Boards</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="PhoneListCtrl">
+<body>
 
-  <ul>
-    <li ng-repeat="board in boards">
-      {{board.title}}
-    </li>
-  </ul>
-  <p>{{greeting}}</p>
+  <div ng-view></div>
 
 </body>
 </html>
