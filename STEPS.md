@@ -9,11 +9,12 @@ Commands:
 1. git clone this project
 2. ```git checkout yeoman```
 3. ```git branch```
-  a. Feel good that there is an * next to yeoman (means you're on the yeoman branch)
+4.Feel good that there is an * next to yeoman (means you're on the yeoman branch)
 4. ```npm install```   
-  a. Downloads many things from the Internet
+4. Downloads many things from the Internet
 5. ```bower install```
-  a. Downloads things for the client side of things
+6. Downloads things for the client side of things
 6. ```grunt server```
-  a. The article (1) in the background section helped you install & setup, npm, bower, and grunt.
+7. The article (1) in the background section helped you install & setup, npm, bower, and grunt.
+
 
