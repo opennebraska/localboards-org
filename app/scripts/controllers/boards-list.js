@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('localboardsUiReduxApp')
-  .controller('BoardsCtrl', function ($scope, $http) {
+  .controller('BoardsListCtrl', function ($scope, $http) {
   	var api = new $.LocalBoardsAPI();
   	function onBoardListRequest(success, message, data) {
 		if (success) {
