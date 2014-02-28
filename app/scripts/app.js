@@ -12,6 +12,10 @@ angular.module('localboardsUiReduxApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/boards', {
+        templateUrl: 'views/boards.html',
+        controller: 'BoardsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
