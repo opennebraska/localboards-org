@@ -10,7 +10,7 @@ Commands:
 1. git clone this project
 2. ```git checkout yeoman```
 3. ```git branch```
-4.Feel good that there is an * next to yeoman (means you're on the yeoman branch)
+4. Feel good that there is an * next to yeoman (means you're on the yeoman branch)
 4. ```npm install```   
 4. Downloads many things from the Internet
 5. ```bower install```
