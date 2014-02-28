@@ -14,9 +14,14 @@ localboardsControllers.controller('BoardListCtrl', ['$scope', '$http',
     }
 ]);
 
-localboardsControllers.controller('BoardDetailCtrl', ['$scope', '$routeParams',
-    function($scope, $routeParams) {
+localboardsControllers.controller('BoardDetailCtrl', ['$scope', '$routeParams', '$http',
+    function($scope, $routeParams, $http) {
         $scope.boardId = $routeParams.boardId;
+        $http.get('http://api.localboards.org/states/NE/boards/' + $routeParams.boardId).
+            success(function(data) {
+                $scope.board = data.data;
+            }
+        );
     }
 ]);
 

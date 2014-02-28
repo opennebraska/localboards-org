@@ -1,1 +1,80 @@
 TBD: detail view for {{boardId}}
+
+<label>Title</label>
+<input type="text" ng-model="board.title">
+
+<label>Alternating seats</label>
+<input type="text" ng-model="board.alternating_seats">
+
+<label>City ID</label>
+<input type="text" ng-model="board.city_id">
+
+<label>County ID</label>
+<input type="text" ng-model="board.county_id">
+
+<label>Department ID</label>
+<input type="text" ng-model="board.department_id">
+
+<label>Duties</label>
+<input type="text" ng-model="board.duties">
+
+<label>Meeting cron</label>
+<input type="text" ng-model="board.meeting_cron">
+
+<label>Meeting dates</label>
+<input type="text" ng-model="board.meeting_dates">
+
+<label>Meeting place</label>
+<input type="text" ng-model="board.meeting_place">
+
+<label>Meeting time</label>
+<input type="text" ng-model="board.meeting_time">
+
+<label>Next opening</label>
+<input type="text" ng-model="board.next_opening">
+
+<label>Next opening qualifications</label>
+<input type="text" ng-model="board.next_opening_qual">
+
+
+
+<label>Is active</label>
+{{board.is_active}}
+
+<label>Created at</label>
+{{board.created_at}}
+
+<label>Created by ID</label>
+{{board.created_by_id}}
+
+
+
+
+<pre>
+
+
+Jay's example JSON dump for debuggy:
+    "alternating_seats": 2,
+    "city_id": 1,
+    "county_id": 2380,
+    "created_at": "2013-11-24T23:03:26Z",
+    "created_by_id": null,
+    "department_id": 1,
+    "duties": "Decides appeals on permits, licenses, notices revoked and inoperable vehicles, revoked and suspended tree removal licenses, denied curb cuts, and contractor performance disputes.",
+    "id": 1,
+    "is_active": true,
+    "meeting_cron": "30 13 * * Mon#4",
+    "meeting_dates": "Fourth Monday of each month",
+    "meeting_place": "Mayor's Conference Room",
+    "meeting_time": "1:30 p.m.",
+    "next_opening": "Immediately",
+    "next_opening_qual": "Alternate",
+    "qualifications": "Can't be employees or officials of the city.",
+    "seats": 5,
+    "state_id": 27,
+    "term_length": null,
+    "title": "ADMINISTRATIVE APPEALS",
+    "updated_at": "2013-11-24T23:03:26Z",
+    "updated_by_id": null,
+    "url": "http://www.cityofomaha.org/planning/boards/administrative-board-of-appeals"
+</pre>
