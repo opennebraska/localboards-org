@@ -5,9 +5,9 @@
 var phonecatApp = angular.module('phonecatApp', []);
 
 phonecatApp.controller('PhoneListCtrl', function($scope, $http) {
-    $http.get('http://rest-service.guides.spring.io/greeting').
+    $http.get('http://api.localboards.org/states/NE/boards').
         success(function(data) {
-            $scope.greeting = data;
+            $scope.boards = data.data;
         }
     );
 });
