@@ -16,7 +16,7 @@
 
       <ul class="boards">
         <li ng-repeat="board in boards| filter:query | orderBy:orderProp" class="thumbnail">
-        {{board.title}}
+          <a href="#/boards/{{board.id}}">{{board.title}}</a>
         </li>
       </ul>
 
