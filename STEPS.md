@@ -1,5 +1,19 @@
-There are several branches.
+There are several branches.    These notes are about the yeoman branch.
 
-git checkout yeoman
------------------
-```git branch```
+Background
+------
+1. Learn and practice some yeoman by reading and follow http://www.sitepoint.com/kickstart-your-angularjs-development-with-yeoman-grunt-and-bower/
+
+
+Commands:
+1. git clone this project
+2. ```git checkout yeoman```
+3. ```git branch```
+  a. Feel good that there is an * next to yeoman (means you're on the yeoman branch)
+4. ```npm install```   
+  a. Downloads many things from the Internet
+5. ```bower install```
+  a. Downloads things for the client side of things
+6. ```grunt server```
+  a. The article (1) in the background section helped you install & setup, npm, bower, and grunt.
+
