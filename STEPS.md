@@ -6,6 +6,7 @@ Background
 
 
 Commands:
+
 1. git clone this project
 2. ```git checkout yeoman```
 3. ```git branch```
