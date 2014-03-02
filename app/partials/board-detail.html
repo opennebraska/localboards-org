@@ -38,12 +38,16 @@ TBD: detail view for {{boardId}}
         <div class="control-group">
             <label class="control-label" for="inputDuties">Duties</label>
             <div class="controls">
-                <textarea ng-model="board.duties">
+                <!-- haha oops http://plnkr.co/edit/K48oNo3IcIF1t6YYMmJp?p=preview -->
+                <!-- thanks Freenode #angularjs @Foxandxss! -->
+                <textarea ng-model="board.duties"></textarea>
             </div>
         </div>
         <button type="submit" class="btn">Submit</button>
     </fieldset>
 </form>
+
+
 
 <label>Meeting cron</label>
 <input type="text" ng-model="board.meeting_cron">
