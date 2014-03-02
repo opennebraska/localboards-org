@@ -1,14 +1,30 @@
-TBD: detail view for {{boardId}}
-
 <!-- HTML forms, Twitter Bootstrap style:
     http://getbootstrap.com/2.3.2/base-css.html#forms -->
 <form class="form-horizontal">
     <fieldset>
-        <legend>Board {{boardId}}</legend>
+        <legend>{{board.title}}</legend>
+        <div class="control-group">
+            <label class="control-label" for="inputId">ID</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.id">
+            </div>
+        </div>
         <div class="control-group">
             <label class="control-label" for="inputTitle">Title</label>
             <div class="controls">
                 <input type="text" ng-model="board.title">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputSeats">Seats</label>
+            <div class="controls">
+                <input type="text" ng-model="board.seats">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputTermLength">Term length</label>
+            <div class="controls">
+                <input type="text" ng-model="board.term_length">
             </div>
         </div>
         <div class="control-group">
@@ -21,6 +37,12 @@ TBD: detail view for {{boardId}}
             <label class="control-label" for="inputCityId">City ID</label>
             <div class="controls">
                 <input type="text" ng-model="board.city_id">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputStateId">State ID</label>
+            <div class="controls">
+                <input type="text" ng-model="board.state_id">
             </div>
         </div>
         <div class="control-group">
@@ -43,69 +65,79 @@ TBD: detail view for {{boardId}}
                 <textarea ng-model="board.duties"></textarea>
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="inputMeetingCron">Meeting cron</label>
+            <div class="controls">
+                <input type="text" ng-model="board.meeting_cron">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputMeetingDates">Meeting dates</label>
+            <div class="controls">
+                <input type="text" ng-model="board.meeting_dates">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputMeetingPlace">Meeting place</label>
+            <div class="controls">
+                <input type="text" ng-model="board.meeting_place">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputMeetingTime">Meeting time</label>
+            <div class="controls">
+                <input type="text" ng-model="board.meeting_time">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputNextOpening">Next opening</label>
+            <div class="controls">
+                <input type="text" ng-model="board.next_opening">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputQualifications">Qualifications</label>
+            <div class="controls">
+                <textarea ng-model="board.qualifications"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputNextOpeningQualifications">Next opening qualifications</label>
+            <div class="controls">
+                <textarea ng-model="board.next_opening_qual"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputIsActive">Is active</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.is_active">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputCreatedAt">Created at</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.created_at">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputCreatedById">Created by ID</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.created_by_id">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputUpdatedAt">Updated at</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.updated_at">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputUpdatedById">Updated by ID</label>
+            <div class="controls">
+                <input type="text" ng-readonly="1" ng-model="board.updated_by_id">
+            </div>
+        </div>
         <button type="submit" class="btn">Submit</button>
     </fieldset>
 </form>
 
-
-
-<label>Meeting cron</label>
-<input type="text" ng-model="board.meeting_cron">
-
-<label>Meeting dates</label>
-<input type="text" ng-model="board.meeting_dates">
-
-<label>Meeting place</label>
-<input type="text" ng-model="board.meeting_place">
-
-<label>Meeting time</label>
-<input type="text" ng-model="board.meeting_time">
-
-<label>Next opening</label>
-<input type="text" ng-model="board.next_opening">
-
-<label>Next opening qualifications</label>
-<input type="text" ng-model="board.next_opening_qual">
-
-
-
-<label>Is active</label>
-{{board.is_active}}
-
-<label>Created at</label>
-{{board.created_at}}
-
-<label>Created by ID</label>
-{{board.created_by_id}}
-
-
-
-
-<pre>
-
-
-Jay's example JSON dump for debuggy:
-    "alternating_seats": 2,
-    "city_id": 1,
-    "county_id": 2380,
-    "created_at": "2013-11-24T23:03:26Z",
-    "created_by_id": null,
-    "department_id": 1,
-    "duties": "Decides appeals on permits, licenses, notices revoked and inoperable vehicles, revoked and suspended tree removal licenses, denied curb cuts, and contractor performance disputes.",
-    "id": 1,
-    "is_active": true,
-    "meeting_cron": "30 13 * * Mon#4",
-    "meeting_dates": "Fourth Monday of each month",
-    "meeting_place": "Mayor's Conference Room",
-    "meeting_time": "1:30 p.m.",
-    "next_opening": "Immediately",
-    "next_opening_qual": "Alternate",
-    "qualifications": "Can't be employees or officials of the city.",
-    "seats": 5,
-    "state_id": 27,
-    "term_length": null,
-    "title": "ADMINISTRATIVE APPEALS",
-    "updated_at": "2013-11-24T23:03:26Z",
-    "updated_by_id": null,
-    "url": "http://www.cityofomaha.org/planning/boards/administrative-board-of-appeals"
-</pre>
