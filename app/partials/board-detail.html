@@ -1,22 +1,49 @@
 TBD: detail view for {{boardId}}
 
-<label>Title</label>
-<input type="text" ng-model="board.title">
-
-<label>Alternating seats</label>
-<input type="text" ng-model="board.alternating_seats">
-
-<label>City ID</label>
-<input type="text" ng-model="board.city_id">
-
-<label>County ID</label>
-<input type="text" ng-model="board.county_id">
-
-<label>Department ID</label>
-<input type="text" ng-model="board.department_id">
-
-<label>Duties</label>
-<input type="text" ng-model="board.duties">
+<!-- HTML forms, Twitter Bootstrap style:
+    http://getbootstrap.com/2.3.2/base-css.html#forms -->
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Board {{boardId}}</legend>
+        <div class="control-group">
+            <label class="control-label" for="inputTitle">Title</label>
+            <div class="controls">
+                <input type="text" ng-model="board.title">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputAlternatingSeats">Alternating Seats</label>
+            <div class="controls">
+                <input type="text" ng-model="board.alternating_seats">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputCityId">City ID</label>
+            <div class="controls">
+                <input type="text" ng-model="board.city_id">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputCountyId">County ID</label>
+            <div class="controls">
+                <input type="text" ng-model="board.county_id">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputDepartmentId">Department ID</label>
+            <div class="controls">
+                <input type="text" ng-model="board.department_id">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputDuties">Duties</label>
+            <div class="controls">
+                <textarea ng-model="board.duties">
+            </div>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </fieldset>
+</form>
 
 <label>Meeting cron</label>
 <input type="text" ng-model="board.meeting_cron">
