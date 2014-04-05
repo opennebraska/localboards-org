@@ -14,14 +14,17 @@
 
     </div>
     <div class="span10">
-      <!--Body content-->
-
-      <ul class="boards">
-        <li ng-repeat="board in boards| filter:query | orderBy:orderProp" class="thumbnail">
-          <a href="#/boards/{{board.id}}">{{board.title}}</a>
-        </li>
-      </ul>
-      
+      <div class="boards" ng-repeat="board in boards | filter:query | orderBy:orderProp" class="thumbnail">
+        <div class="row">
+          <div class="span5">
+            <h4><a href="#/boards/{{board.id}}">{{board.title}}</a></h4>
+            <div class="seats">
+              <b>{{board.seatLimit()}}</b> <small>SEATS</small>
+            </div>
+            <p>{{board.duties}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

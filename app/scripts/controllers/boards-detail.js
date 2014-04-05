@@ -23,7 +23,7 @@ angular.module('localboardsUiReduxApp')
 			});
 			memberListSize = data.length;
 		}
-		updateOpenSeats(memberListSize);
+		updateBoardSeats(memberListSize);
 	}
 	function onBoardSeatListRequest(success, message, data) {
 		if (success) {
@@ -42,16 +42,20 @@ angular.module('localboardsUiReduxApp')
 		}
 		$scope.$apply();
 	}
-	function updateOpenSeats(memberListSize) {
+	function updateBoardSeats(memberListSize) {
 		var seatsOpen = 0;
 		if ($scope.board.seats === -1) { // no seat limit
-			$scope.board.seats = seatsOpen = 'OPEN';
+			$scope.board.seatLimit = seatsOpen = 'OPEN';
 		} else if (!isNaN(memberListSize) && !isNaN($scope.board.seats)) {
 			var diff = $scope.board.seats - memberListSize;
+			$scope.board.seatLimit = $scope.board.seats;
 			if (diff > 0)
 				seatsOpen = diff;
 		}
 		$scope.board.seatsOpen = seatsOpen;
+
+
+
 		$scope.$apply();
 	}
 	
