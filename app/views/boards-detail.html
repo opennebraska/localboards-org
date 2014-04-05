@@ -1,82 +1,102 @@
+<!-- this page makes API calls, so include script -->
 <script src="scripts/api-localboards.js"></script>
 
-TBD: detail view for {{boardId}}
-
-<label>Title</label>
-<input type="text" ng-model="board.title">
-
-<label>Alternating seats</label>
-<input type="text" ng-model="board.alternating_seats">
-
-<label>City ID</label>
-<input type="text" ng-model="board.city_id">
-
-<label>County ID</label>
-<input type="text" ng-model="board.county_id">
-
-<label>Department ID</label>
-<input type="text" ng-model="board.department_id">
-
-<label>Duties</label>
-<input type="text" ng-model="board.duties">
-
-<label>Meeting cron</label>
-<input type="text" ng-model="board.meeting_cron">
-
-<label>Meeting dates</label>
-<input type="text" ng-model="board.meeting_dates">
-
-<label>Meeting place</label>
-<input type="text" ng-model="board.meeting_place">
-
-<label>Meeting time</label>
-<input type="text" ng-model="board.meeting_time">
-
-<label>Next opening</label>
-<input type="text" ng-model="board.next_opening">
-
-<label>Next opening qualifications</label>
-<input type="text" ng-model="board.next_opening_qual">
-
-
-
-<label>Is active</label>
-{{board.is_active}}
-
+<h1>{{board.title}}</h1>
+<br />
+<br />
 <label>Created at</label>
 {{board.created_at}}
-
+<br />
 <label>Created by ID</label>
 {{board.created_by_id}}
-
-
-
-
-<pre>
-
-
-Jay's example JSON dump for debuggy:
-    "alternating_seats": 2,
-    "city_id": 1,
-    "county_id": 2380,
-    "created_at": "2013-11-24T23:03:26Z",
-    "created_by_id": null,
-    "department_id": 1,
-    "duties": "Decides appeals on permits, licenses, notices revoked and inoperable vehicles, revoked and suspended tree removal licenses, denied curb cuts, and contractor performance disputes.",
-    "id": 1,
-    "is_active": true,
-    "meeting_cron": "30 13 * * Mon#4",
-    "meeting_dates": "Fourth Monday of each month",
-    "meeting_place": "Mayor's Conference Room",
-    "meeting_time": "1:30 p.m.",
-    "next_opening": "Immediately",
-    "next_opening_qual": "Alternate",
-    "qualifications": "Can't be employees or officials of the city.",
-    "seats": 5,
-    "state_id": 27,
-    "term_length": null,
-    "title": "ADMINISTRATIVE APPEALS",
-    "updated_at": "2013-11-24T23:03:26Z",
-    "updated_by_id": null,
-    "url": "http://www.cityofomaha.org/planning/boards/administrative-board-of-appeals"
-</pre>
+<div class="leftColumn">
+  <div class="badge-container">
+    <div class="row">
+      <ul class="thumbnails list-unstyled">
+        <li class="span3">
+          <div class="thumbnail" style="padding: 0">
+            <div style="padding:4px">
+              <div class="colorbar blue"></div>
+            </div>
+            <div class="caption">
+              <p>{{board.duties}}</p>
+            </div>
+            <div class="modal-footer" style="text-align: left">
+              <div class="row-fluid">
+                <div class="span4"><b>{{board.seats}}</b><br/><small>SEATS</small></div>
+                <div class="span4"><b>{{board.seatsOpen}}</b><br/><small>SEATS<br />OPEN</small></div>
+                <div class="span4">
+                    <span ng-if="board.is_active">
+                        <b>IS</b>
+                    </span>
+                    <span ng-if="! board.is_active">
+                        <b>NOT</b>
+                    </span>
+                    <br />
+                    <small>ACTIVE</small>
+                </div>
+              </div>
+              <div ng-if="board.alternating_seats">
+                ({{board.alternating_seats}} alternating seats)
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="rightColumn">
+  <div class="orgInfo">
+    <h3>Meeting Info</h3>
+    <table class="paddedTable">
+      <tbody>
+        <tr ng-if="board.url.length">
+          <td>URL:</td>
+          <td><a href="{{board.url}}" target="_blank">Visit Website</a></td>
+        </tr>
+        <tr ng-if="board.meeting_dates.length">
+          <td>Meeting Dates:</td>
+          <td>{{board.meeting_dates}}</td>
+        </tr>
+        <tr ng-if="board.meeting_place.length">
+          <td>Meeting Place:</td>
+          <td>{{board.meeting_place}}</td>
+        </tr>
+        <tr ng-if="board.meeting_time.length">
+          <td>Meeting Time:</td>
+          <td>{{board.meeting_time}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="qualifications" ng-if="board.qualifications.length">
+    <h3>Qualifications to Apply</h3>
+    <span>{{board.qualifications}}</span>
+  </div>
+  <div class="openings" ng-if="board.openings.length">
+    <h3>Upcoming Openings</h3>
+    <table class="paddedTable">
+      <theader>
+        <tr>
+          <th>Time</th>
+          <th>Position</th>
+        </tr>
+      </theader>
+      <tbody data-bind="foreach: openings()">
+        <tr>
+          <td data-bind="text: opening">N/A</td>
+          <td data-bind="text: qualifications">N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="members">
+    <h3>Members</h3>
+    <div ng-if="board.members.length" ng-repeat="member in board.members" >
+      <div class="member">
+        <span class="memberName">{{member.first_name}} {{member.last_name}}</span>
+      </div>
+    </div>
+  </div>
+</div>
