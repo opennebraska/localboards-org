@@ -83,10 +83,10 @@
           <th>Position</th>
         </tr>
       </theader>
-      <tbody data-bind="foreach: openings()">
+      <tbody ng-repeat="opening in board.openings">
         <tr>
-          <td data-bind="text: opening">N/A</td>
-          <td data-bind="text: qualifications">N/A</td>
+          <td>{{opening.opening}}</td>
+          <td>{{opening.qualifications}}</td>
         </tr>
       </tbody>
     </table>

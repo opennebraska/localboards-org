@@ -10,14 +10,18 @@ angular.module('localboardsUiReduxApp')
 		if (success) {
 			$scope.board = data.data;
 			$scope.board.title = shared_toTitleCase($scope.board.title);
+			$scope.board.openings = parseBoardOpenings();
 			$scope.$apply();
 			api.getBoardSeatListFromStateBoardById('ne', data.data.id, 0, 1000);
 		}
 	}
 	function onBoardMemberListRequest(success, message, data) {
+		if (!$scope.board.memberList)
+			$scope.board.memberList = [];
 		var memberListSize = 0;
 		if (success) {
 			$.each(data, function() {
+				$scope.board.memberList.push(this);
 				//vm.addMember(new createNewBoardMember(this));
 				api.getMemberFromStateById('ne', this.id);
 			});
@@ -26,9 +30,11 @@ angular.module('localboardsUiReduxApp')
 		updateBoardSeats(memberListSize);
 	}
 	function onBoardSeatListRequest(success, message, data) {
+		if (!$scope.board.memberSeats)
+			$scope.board.memberSeats = [];
 		if (success) {
 			$.each(data, function() {
-				//vm.addSeat(new createNewSeat(this));
+				$scope.board.memberSeats.push(this);
 			});
 			api.getBoardMemberListFromStateBoardById('ne', boardId, 0, 1000);
 		}
@@ -42,6 +48,21 @@ angular.module('localboardsUiReduxApp')
 		}
 		$scope.$apply();
 	}
+	function parseBoardOpenings() {
+		var rval = [];
+		if ($scope.board.next_opening && $scope.board.next_opening_qual)
+		{
+			var openingArr = $scope.board.next_opening.split('|');
+			var openingQualArr = $scope.board.next_opening_qual.split('|');
+			for (var i = 0; i < $scope.board.next_opening.length; i++) {
+				if (openingArr[i] && openingQualArr[i])
+					rval.push({opening: openingArr[i], qualifications: openingQualArr[i]});
+			}
+			return rval;
+		} else {
+			return null;
+		}
+	}
 	function updateBoardSeats(memberListSize) {
 		var seatsOpen = 0;
 		if ($scope.board.seats === -1) { // no seat limit
@@ -53,9 +74,6 @@ angular.module('localboardsUiReduxApp')
 				seatsOpen = diff;
 		}
 		$scope.board.seatsOpen = seatsOpen;
-
-
-
 		$scope.$apply();
 	}
 	
