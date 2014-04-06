@@ -2,6 +2,9 @@
 
 angular.module('localboardsUiReduxApp')
   .controller('BoardsDetailCtrl', function ($scope, $routeParams) {
+
+  	shared_showLoader();
+
   	var api = new $.LocalBoardsAPI();
   	var boardId = $routeParams.boardId;
 
@@ -21,8 +24,6 @@ angular.module('localboardsUiReduxApp')
 		if (success) {
 			$.each(data, function() {
 				var self = this;
-				//vm.addMember(new createNewBoardMember(this));
-				// set seat info here? pull from $scope.board.memberSeats
 				var match = $.grep($scope.board.memberSeats, function (e) { return self.board_seat_id === e.id });
 				if (match.length === 1) {
 					this.title = match[0].title;
@@ -33,6 +34,7 @@ angular.module('localboardsUiReduxApp')
 			memberListSize = data.length;
 		}
 		updateBoardSeats(memberListSize);
+		shared_hideLoader();
 	}
 	function onBoardSeatListRequest(success, message, data) {
 		if (!$scope.board.memberSeats)

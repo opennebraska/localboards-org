@@ -2,6 +2,7 @@
 
 angular.module('localboardsUiReduxApp')
   .controller('BoardsListCtrl', function ($scope) {
+  	shared_showLoader();
   	var api = new $.LocalBoardsAPI();
   	function onBoardListRequest(success, message, data) {
 		if (success) {
@@ -9,6 +10,7 @@ angular.module('localboardsUiReduxApp')
 			setupBoardSeats();
 			$scope.$apply();
 		}
+		shared_hideLoader();
 	}
 	function setupBoardSeats() {
 		$.each($scope.boards, function() {
