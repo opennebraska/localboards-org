@@ -4,7 +4,6 @@ angular.module('localboardsUiReduxApp')
   .controller('BoardsDetailCtrl', function ($scope, $routeParams) {
   	var api = new $.LocalBoardsAPI();
   	var boardId = $routeParams.boardId;
-  	$scope.boardId = boardId;
 
   	function onBoardRequest(success, message, data) {
 		if (success) {
@@ -16,13 +15,19 @@ angular.module('localboardsUiReduxApp')
 		}
 	}
 	function onBoardMemberListRequest(success, message, data) {
-		if (!$scope.board.memberList)
-			$scope.board.memberList = [];
+		if (!$scope.board.members)
+			$scope.board.members = [];
 		var memberListSize = 0;
 		if (success) {
 			$.each(data, function() {
-				$scope.board.memberList.push(this);
+				var self = this;
 				//vm.addMember(new createNewBoardMember(this));
+				// set seat info here? pull from $scope.board.memberSeats
+				var match = $.grep($scope.board.memberSeats, function (e) { return self.board_seat_id === e.id });
+				if (match.length === 1) {
+					this.title = match[0].title;
+				}
+				$scope.board.members.push(this);
 				api.getMemberFromStateById('ne', this.id);
 			});
 			memberListSize = data.length;
@@ -40,13 +45,15 @@ angular.module('localboardsUiReduxApp')
 		}
 	}
 	function onMemberRequest(success, message, data) {
-		if (!$scope.board.members)
-			$scope.board.members = [];
+		if (!$scope.board.people)
+			$scope.board.people = [];
 		if (success) {
-			$scope.board.members.push(data);
+			// loop at memberList until we find a match on memberList.Id = data.Id
+			// then add extra fields from member into 
+			var person = data;
+			$scope.board.people.push(person);
 			//updateMemberWithPersonData(data);
 		}
-		$scope.$apply();
 	}
 	function parseBoardOpenings() {
 		var rval = [];

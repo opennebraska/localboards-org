@@ -96,6 +96,7 @@
     <div ng-if="board.members.length" ng-repeat="member in board.members" >
       <div class="member">
         <span class="memberName">{{member.first_name}} {{member.last_name}}</span>
+        <span ng-if="member.title.length">[{{member.title}}]</span>
       </div>
     </div>
   </div>
