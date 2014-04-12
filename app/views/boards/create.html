@@ -1,0 +1,33 @@
+<!-- this page makes API calls, so include script -->
+<script src="scripts/api-localboards.js"></script>
+
+<h1>Create a new board</h1>
+<br />
+<div class="leftColumn">
+  
+</div>
+<div class="rightColumn">
+  <form name="boardCreate" ng-submit="create()" ng-controller="BoardsCreateCtrl">
+    <h2>Name:</h2>
+    <input type="text" ng-model="board.title" ng-pattern="titleRegex" ng-trim="true" name="title" required />
+    <span ng-show="boardCreate.title.$error.required">{{requiredText}}</span>
+    <span ng-show="boardCreate.title.$error.pattern">{{titleMessage}}</span>
+    <br />
+
+    <h2>Seats:</h2>
+    
+    <input type="checkbox" ng-model="board.openSeats" name="openSeats" id="openSeats" />
+    <label for="openSeats">Open Seats (all members welcome)</label>
+    <br />
+    <input type="number" ng-show="! board.openSeats" ng-model="board.seats" min="{{seatsMin}}" max="{{seatsMax}}" name="seats" integer />
+    <span ng-show="boardCreate.seats.$error.required && ! board.openSeats">{{requiredText}}</span>
+
+    <span ng-show="boardCreate.seats.$error.min || boardCreate.seats.$error.max">{{seatsInvalidRangeMessage}}</span>
+    <h2>Alternating Seats</h2>
+    <input type="text" ng-model="board.alternating_seats" name="alternating_seats" />
+    <h2>Webpage:</h2>
+    <input type="text" ng-model="board.url" name="url" />
+    <br />
+    <input type="submit" ng-disabled="boardCreate.$invalid" value="Create"  />
+  </form>
+</div>

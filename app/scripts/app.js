@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('localboardsUiReduxApp', [
+angular.module('localboardsApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -9,15 +9,19 @@ angular.module('localboardsUiReduxApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/boards-list.html',
+        templateUrl: 'views/boards/list.html',
         controller: 'BoardsListCtrl'
       })
       .when('/boards', {
-        templateUrl: 'views/boards-list.html',
+        templateUrl: 'views/boards/list.html',
         controller: 'BoardsListCtrl'
       })
+      .when('/boards/create', { 
+        templateUrl: 'views/boards/create.html',
+        controller: 'BoardsCreateCtrl'
+      })
       .when('/boards/:boardId', {
-        templateUrl: 'views/boards-detail.html',
+        templateUrl: 'views/boards/detail.html',
         controller: 'BoardsDetailCtrl'
       })
       .when('/about', {

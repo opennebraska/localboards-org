@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="localboardsUiReduxApp">
+  <body ng-app="localboardsApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -44,15 +44,9 @@
           <li><a href="#/boards">Boards</a></li>
           <li><a href="http://api.localboards.org/docs/index.html">API</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle clickable" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <a class="dropdown-toggle clickable" data-toggle="dropdown">Douglas County (Omaha, NE) <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="#">Switch Region</a></li>
             </ul>
           </li>
         </ul>
@@ -106,14 +100,16 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/shared.js"></script>
-        <script src="scripts/controllers/boards-list.js"></script>
-        <script src="scripts/controllers/boards-detail.js"></script>
+        <script src="scripts/controllers/boards/list.controller.js"></script>
+        <script src="scripts/controllers/boards/detail.controller.js"></script>
+        <script src="scripts/controllers/boards/create.controller.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
 </body>

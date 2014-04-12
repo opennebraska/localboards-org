@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('localboardsUiReduxApp')
+angular.module('localboardsApp')
   .controller('BoardsListCtrl', function ($scope) {
   	shared_showLoader();
   	var api = new $.LocalBoardsAPI();

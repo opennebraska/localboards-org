@@ -1,7 +1,7 @@
 ;(function($) {
 	$.LocalBoardsAPI = function( ) {
 		var defaults = {
-			domain: 'http://api.localboards.org',
+			domain: 'http://0.0.0.0:3001',
 			pageIndex: 0,
 			pageSize: 25,
 			onCountyListRequest: function( success, message, data ) {
@@ -47,6 +47,11 @@
 			onMemberRequest: function( success, message, data ) {
 				if( plugin.onMemberRequest ) {
 					plugin.onMemberRequest( success, message, data );
+				}
+			},
+			onCreateBoardRequest: function( success, message, data ) {
+				if( plugin.onCreateBoardRequest ) {
+					plugin.onCreateBoardRequest( success, message, data );
 				}
 			}
 		};
@@ -511,6 +516,31 @@
 					var notice = 'Status['+xhr.status+'] '+xhr.statusText+"\n\n"+
 								 'Response: '+xhr.responseText;
 					plugin.settings.onMemberRequest(false, notice, null);
+				}
+			});
+		};
+
+		plugin.createBoard = function ( state, board ) { 
+			debugger;
+			$.ajax({
+				type: "POST",
+				crossDomain: true,
+				accept: "application/json",
+				contentType: "application/json",
+				url: plugin.settings.domain + "/states/"+state+"/boards",
+				data: JSON.stringify(board),
+				dataType: "json",
+				success: function (data) {
+					if (data.success) {
+						plugin.settings.onCreateBoardRequest(true, data.message, data.data);
+					} else { 
+						plugin.settings.onCreateBoardRequest(false, data.message, null);
+					}
+				},
+				error:function(xhr,status,error) {
+					var notice = 'Status['+xhr.status+'] '+xhr.statusText+"\n\n"+
+								 'Response: '+xhr.responseText;
+					plugin.settings.onCreateBoardRequest(false, notice, null);
 				}
 			});
 		};

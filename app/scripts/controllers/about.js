@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('localboardsUiReduxApp')
+angular.module('localboardsApp')
   .controller('AboutCtrl', function ($scope) {
 
   });
