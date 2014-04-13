@@ -336,7 +336,7 @@
 			});
 		};
 
-		plugin.getBoardMemberFromStateBoardById = function( state, boardId ) {
+		plugin.getBoardMemberFromStateBoardById = function( state, boardId, id ) {
 			$.ajax({
 				type:'GET',
 				crossDomain: true,
@@ -474,7 +474,7 @@
 			});
 		};
 
-		plugin.getBoardSeatFromStateBoardById = function( state, boardId ) {
+		plugin.getBoardSeatFromStateBoardById = function( state, boardId, id ) {
 			$.ajax({
 				type:'GET',
 				crossDomain: true,
@@ -532,7 +532,7 @@
 				success: function (data) {
 					if (data.success) {
 						plugin.settings.onCreateBoardRequest(true, data.message, data.data);
-					} else { 
+					} else {
 						plugin.settings.onCreateBoardRequest(false, data.message, null);
 					}
 				},
