@@ -13,21 +13,41 @@
     <span ng-show="boardCreate.title.$error.required">{{requiredText}}</span>
     <span ng-show="boardCreate.title.$error.pattern">{{titleMessage}}</span>
     <br />
+    <input type="checkbox" ng-model="board.is_active" name="is_active" id="is_active" />
+    <label for="is_active">Active</label>
+
+    <h2>Duties:</h2>
+    <textarea ng-model="board.duties" ng-trim="true" name="duties" rows="6" cols="70"></textarea>
+    <br />
 
     <h2>Seats:</h2>
-    
     <input type="checkbox" ng-model="board.openSeats" name="openSeats" id="openSeats" />
     <label for="openSeats">Open Seats (all members welcome)</label>
     <br />
-    <input type="number" ng-show="! board.openSeats" ng-model="board.seats" min="{{seatsMin}}" max="{{seatsMax}}" name="seats" integer />
-    <span ng-show="boardCreate.seats.$error.required && ! board.openSeats">{{requiredText}}</span>
-
+    <input type="number" ng-show="! board.openSeats" ng-required="! board.openSeats" ng-model="board.seats" min="{{seatsMin}}" max="{{seatsMax}}" name="seats" integer />
+    <span ng-show="boardCreate.seats.$error.required">{{requiredText}}</span>
     <span ng-show="boardCreate.seats.$error.min || boardCreate.seats.$error.max">{{seatsInvalidRangeMessage}}</span>
-    <h2>Alternating Seats</h2>
-    <input type="text" ng-model="board.alternating_seats" name="alternating_seats" />
+
+    <h2>Meeting Information:</h2>
+    <h4>Meeting Dates</h4>
+    <input type="text" ng-model="board.meeting_dates" ng-trim="true" name="meeting_dates" />
+    <br />
+    <h4>Meeting Place</h4>
+    <input type="text" ng-model="board.meeting_place" ng-trim="true" name="meeting_place" />
+    <br />
+    <h4>Meeting Time</h4>
+    <input type="text" ng-model="board.meeting_time" ng-trim="true" name="meeting_time" />
+    <br />
+
     <h2>Webpage:</h2>
     <input type="text" ng-model="board.url" name="url" />
     <br />
+    <br />
+
+
+
+
+
     <input type="submit" ng-disabled="boardCreate.$invalid" value="Create"  />
   </form>
 </div>

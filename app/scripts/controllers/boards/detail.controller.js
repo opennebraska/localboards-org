@@ -54,7 +54,6 @@ angular.module('localboardsApp')
 			// then add extra fields from member into 
 			var person = data;
 			$scope.board.people.push(person);
-			//updateMemberWithPersonData(data);
 		}
 	}
 	function parseBoardOpenings() {
