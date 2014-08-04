@@ -323,6 +323,7 @@
 				dataType:'json',
 				success:function(data) {
 					if(data.success) {
+						data.data.id = id;
 						plugin.settings.onBoardMemberListRequest(true, data.message, data.data);
 					} else {
 						plugin.settings.onBoardMemberListRequest(false, data.message, null);
